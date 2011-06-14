@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='org.eclipse.update.feature' id='org.demo.camp.nantes.feature' version='1.0.0.201106140017'>
+    <properties size='7'>
+      <property name='artifact.size' value='1881'/>
+      <property name='download.size' value='1881'/>
+      <property name='download.md5' value='5271fa6e4acdb573c1ea10073673795a'/>
+      <property name='maven-groupId' value='org.demo.camp.nantes'/>
+      <property name='maven-artifactId' value='Feature'/>
+      <property name='maven-version' value='1.0.0-SNAPSHOT'/>
+      <property name='download.contentType' value='application/zip'/>
+    </properties>
+  </artifact>
+</artifacts>
