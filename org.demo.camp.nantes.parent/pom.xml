@@ -12,6 +12,9 @@
 	<properties>
 		<!-- Tycho version to use, under groupId "org.eclipse.tycho" since 0.12.0 -->
 		<tycho.version>0.12.0</tycho.version>
+		<!-- Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<modules>
