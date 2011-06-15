@@ -2,7 +2,7 @@
 <feature
       id="org.demo.camp.nantes.feature"
       label="Feature"
-      version="1.0.0.201106140017">
+      version="1.0.0.201106151030">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -18,9 +18,9 @@
 
    <plugin
          id="org.demo.camp.nantes"
-         download-size="5"
-         install-size="5"
-         version="1.0.0.201106140017"
+         download-size="4"
+         install-size="4"
+         version="1.0.0.201106151030"
          unpack="false"/>
 
 </feature>
