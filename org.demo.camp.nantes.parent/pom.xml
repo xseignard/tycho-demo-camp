@@ -10,50 +10,70 @@
 	<name>Parent</name>
 
 	<properties>
-		<version.tycho>0.11.1</version.tycho>
+		<!-- Tycho version to use, under groupId "org.eclipse.tycho" since 0.12.0 -->
+		<tycho.version>0.12.0</tycho.version>
 	</properties>
 
 	<modules>
 		<module>../org.demo.camp.nantes.plugin</module>
+		<module>../org.demo.camp.nantes.plugin.tests</module>
 		<module>../org.demo.camp.nantes.feature</module>
 		<module>../update-site</module>
 	</modules>
+
+	<repositories>
+		<repository>
+			<id>indigo</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/releases/indigo</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
+			<!-- Use of Tycho -->
 			<plugin>
-				<groupId>org.sonatype.tycho</groupId>
+				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${version.tycho}</version>
+				<version>${tycho.version}</version>
 				<extensions>true</extensions>
 			</plugin>
+			<!-- Configuration of target platforms -->
 			<plugin>
-				<groupId>org.sonatype.tycho</groupId>
+				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<version>${version.tycho}</version>
+				<version>${tycho.version}</version>
 				<configuration>
 					<resolver>p2</resolver>
-
 					<environments>
 						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
+							<os>linux</os>
+							<ws>gtk</ws>
 							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
 						</environment>
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
 							<arch>x86</arch>
 						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
 					</environments>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>eclipse-indigo</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/indigo</url>
-		</repository>
-	</repositories>
 </project>
