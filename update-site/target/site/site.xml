@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.demo.camp.nantes.feature_1.0.0.201106140017.jar" id="org.demo.camp.nantes.feature" version="1.0.0.201106140017">
-      <category name="demoCampNantes"/>
-   </feature>
-   <category-def name="demoCampNantes" label="Demo Camp Nantes"/>
-</site>
