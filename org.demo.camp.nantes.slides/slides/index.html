@@ -8,7 +8,7 @@
 
 <section>
     <h1>Building eclipse plugins with <strong>Maven</strong> and <strong>Tycho</strong></h1>
-    <footer>by <a href="http://twitter.com/xavier_seignard">@xavier_seignard</a></footer>
+    <footer><a href="http://twitter.com/xavier_seignard">@xavier_seignard</a></footer>
 </section>
 
 <section>
@@ -29,6 +29,7 @@
         <li>Builds for plugins, features, update sites, ...
         <li>Manifest based approach
         <li>Tiny conf file : pom.xml
+        <li><strong>The power of Maven!!</strong>
     </ul>
 </section>
 
@@ -44,147 +45,87 @@
 
 <section>
     <h2>Classic <strong>maven</strong> project configuration</h2>
-    <p>pom.xml : dependencies, convention over configuration
+    <p>pom.xml : dependencies, <strong>convention</strong> over configuration
     <img src="images/pom.png">
     </p>
 </section>
 
-<section class="chapter">
-    <h1>What is DZSlides?</h1>
-</section>
-
 <section>
-    <h2><strong>One</strong> single HTML file.</h2>
-    <svg style="margin: 50px auto 0 auto; display: block;" width="200px" height="300px">
-        <path stroke="#FFFFFF" fill="none" stroke-width="5" d="M50 10 h 140 v 280 h -180 v -240 z M 50 10 v 40 h -40 "/>
-    </svg>
+    <h2>Define your target platform</h2>
+    <p>The set of features/plugins needed to build your app, 3 ways to define it :
+    <ul>
+        <li>Through a <strong>particular eclipse install</strong>
+        <li>In your <strong>pom.xml</strong>, defining the p2 repos needed
+        <li>In a separate <strong>.target file</strong>
+    </ul>
+    </p>
 </section>
-
-<section>
-    <h2>A HTML <strong>template</strong>.</h2>
-    <p>That brings all the needed features to transform a simple HTML5 page into a presentation.</p>
-</section>
-
 
 <section class="code">
-    <style>
-        /* Output from Vim: :TOhtml */
-        pre { margin: 20px 0 0 40px;font-size: 15px; font-weight: bold;}
-        .Constant { color: #af5fff}
-        .StorageClass { color: #ff8700}
-        .Exception { color: #87ff00}
-        .Identifier { color: #ff8700}
-        .Title { color: #d75f00}
-        .String { color: #afaf87}
-        .Type { color: #5fd7ff}
-        .Statement { color: #d7005f}
-        .Function { color: #87ff00}
-        .Comment { color: #CCC}
-    </style>
-    <pre>
-    <span class="Comment">&lt;!DOCTYPE html&gt;</span>
-
-    <span class="Function">&lt;</span><span class="Statement">meta</span><span class="Function"> </span><span class="Type">charset</span><span class="Function">=</span><span class="String">&quot;utf-8&quot;</span><span class="Function">&gt;</span>
-    <span class="Function">&lt;</span><span class="Statement">title</span><span class="Function">&gt;</span><span class="Title">The Title Of Your Presentation</span><span class="Identifier">&lt;/</span><span class="Statement">title</span><span class="Identifier">&gt;</span>
-
-    <span class="Comment">&lt;!</span><span class="Comment">-- Your Slides (one slide == one section) --</span><span class="Comment">&gt;</span>
-
-    <span class="Function">&lt;</span><span class="Statement">section</span><span class="Function">&gt;</span>
-        <span class="Function">&lt;</span><span class="Statement">h1</span><span class="Function">&gt;</span><span class="Title">My presentation</span><span class="Identifier">&lt;/</span><span class="Statement">h1</span><span class="Identifier">&gt;</span>
-    <span class="Identifier">&lt;/</span><span class="Statement">section</span><span class="Identifier">&gt;</span>
-
-    <span class="Function">&lt;</span><span class="Statement">section</span><span class="Function">&gt;</span>
-        <span class="Function">&lt;</span><span class="Statement">h2</span><span class="Function">&gt;</span><span class="Title">Will blow your mind.</span><span class="Identifier">&lt;/</span><span class="Statement">h2</span><span class="Identifier">&gt;</span>
-        <span class="Function">&lt;</span><span class="Statement">p</span><span class="Function">&gt;</span>And this is why:<span class="Identifier">&lt;/</span><span class="Statement">p</span><span class="Identifier">&gt;</span>
-    <span class="Identifier">&lt;/</span><span class="Statement">section</span><span class="Identifier">&gt;</span>
-
-    <span class="Comment">&lt;!</span><span class="Comment">-- Your Style --</span><span class="Comment">&gt;</span>
-
-    <span class="Function">&lt;</span><span class="Exception">style</span><span class="Function">&gt;</span>
-    <span class="Statement">section</span> <span class="Function">{</span>
-        <span class="StorageClass">background</span>: <span class="Constant">black</span>;
-        <span class="StorageClass">color</span>: <span class="Constant">white</span>;
-    <span class="Function">}</span>
-    <span class="Statement">h1</span> <span class="Function">{</span>
-        <span class="StorageClass">color</span>: <span class="Constant">yellow</span>;
-    <span class="Function">}</span>
-    <span class="Identifier">&lt;/</span><span class="Exception">style</span><span class="Identifier">&gt;</span>
-
-    <span class="Comment">&lt;!</span><span class="Comment">-- CORE v2.0b:  --</span><span class="Comment">&gt;</span>
-    <span class="Comment">&lt;!</span><span class="Comment">-- Some Code You Don't Have To Look At --</span><span class="Comment">&gt;</span>
-         <span class="Comment">...<span>
-    </pre>
-</section>
-
-<section class="chapter">
-    <h1>Pros and Cons</h1>
+    <h2>Define your target platform</h2>
+    <p>Through a particular eclipse install :<br/>
+    <br/>
+    <span class="Function">-Dtycho.targetPlatform=</span><span class="Function"></span><span class="Statement">&lt;eclipsehome&gt;</span>
+    </p>
 </section>
 
 <section>
-    <h2>Pros</h2>
+    <h2>Define your target platform</h2>
+    <p>In your pom.xml : 
+    <br/><br/>
+    <img src="images/repoP2.png"></p>
+</section>
+
+<section>
+    <h2>Define your target platform</h2>
+    <p>In a separate .target file : 
+    <br/><br/>
+    <img src="images/target.png"></p>
+</section>
+<section>
+    <h2>Define the packaging</h2>
     <ul>
-        <li>Simple
-        <li>Hackable
-        <li>Accessible
-        <li>Standalone
-        <li>Easy to share
-        <li>Easy to build on top of
-        <li>It's cooler than keynote
+        <li>eclipse-plugin
+        <li>eclipse-test-plugin
+        <li>eclipse-feature
+        <li>eclipse-update-site
+        <li>...
     </ul>
 </section>
 
+<section>	
+    <h2>Define the packaging ...</h2>
+    <br/><br/>
+   	<div align=center><img src="images/packaging.png"></div>
+	<br/>
+    <h2>... And <strong>that's all!</strong></h2>
+    </p>
+</section>
+
 <section>
-    <h2>Cons</h2>
+    <h2>Or almost</h2>
+    <p>You also need to define what we call a <strong>parent pom</strong>.
     <ul>
-        <li>No authoring tool
-        <li>Some browsers don't like it
+        <li>Tycho plugins
+        <li>Other Maven plugins
+        <li>Repositories
+        <li>Target platform
+        <li>Target environments
     </ul>
+    </p>
 </section>
 
 <section class="chapter">
-    <h1>The shells</h1>
+    <h1>Demo Time!</h1>
 </section>
 
-<section>
-    <q>Because I want to keep the whole mechanism in one single web page, the features are quite limited.</q>
-</section>
 
-<section>
-    <h2>A Shell is an <strong>extension</strong> for DZSlides.</h2>
-    <p>A Shell is a web page that <strong>embeds</strong> a presentation and adds a feature to it.</p>
-    <p>The Shell and the Presentation communicate with <strong>postMessage</strong>.</p>
-</section>
-
-<section>
-    <h1>Examples</h1>
-</section>
-
-<section>
-    <h2>controls.html</h2>
-    <p>adds controls (back, forward), and a slide count. Useful if you want to embed the slides in a blog post.</p>
-</section>
-
-<section>
-    <h2>master.html</h2>
-    <p>Show the current slide, the next slide, a time counter and controls another opened presentation (fullscreen).
-    Also displays the hidden notes from the slides (in the &lt;details> tag). Perfect during a live presentation.</p>
-</section>
-
-<section class="chapter">
-    <h1>How to start</h1>
-</section>
-
-<section>
-    <h2>Read the source</h2>
-    <p><a href="http://paulrouget.com/dzslides">Download</a> the template, read it. Look at the examples. There's no "rules".</p>
-    <p><strong>It's as unlimited as the web is.</strong></p>
-    <footer>by <a href="http://twitter.com/paulrouget">@paulrouget</a>.</footer>
-</section>
 
 <!-- Style -->
 
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
 <style>
+
   html { background-color: black; }
   a { color: #FF0066; } a:hover {text-decoration: underline;}
   footer { position: absolute; bottom: 50px; right: 50px; }
@@ -263,6 +204,18 @@
 
   }
   li {list-style-type: none}
+  
+  pre { margin: 70px 0 0 0;font-size: 15px; font-weight: bold;}
+        .Constant { color: #af5fff}
+        .StorageClass { color: #ff8700}
+        .Exception { color: #87ff00}
+        .Identifier { color: #ff8700}
+        .Title { color: #d75f00}
+        .String { color: #afaf87}
+        .Type { color: #5fd7ff}
+        .Statement { color: #d7005f}
+        .Function { color: #87ff00}
+        .Comment { color: #CCC}
 
 </style>
 
