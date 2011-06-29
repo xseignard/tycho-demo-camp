@@ -1,6 +1,7 @@
 package org.demo.camp.nantes.plugin.tests;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 
 import org.demo.camp.nantes.plugin.actions.SampleAction;
@@ -10,7 +11,9 @@ public class SimpleTest {
 	
 	@Test
 	public void simpleUselessTest() {
-		SampleAction action = new SampleAction();
+		SampleAction action = null;
+		assertNull(action);
+		action = new SampleAction();
 		assertNotNull(action);
 	}
 
