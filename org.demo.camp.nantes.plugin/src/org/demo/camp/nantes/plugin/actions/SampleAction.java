@@ -32,7 +32,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 		MessageDialog.openInformation(
 			window.getShell(),
 			"Plugin",
-			"Hello, Eclipse People");
+			"Hello, Eclipse World");
 	}
 
 	/**
