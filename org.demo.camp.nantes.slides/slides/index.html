@@ -8,7 +8,10 @@
 
 <section>
     <h1>Building eclipse plugins with <strong>Maven</strong> and <strong>Tycho</strong></h1>
-    <footer><a href="http://twitter.com/xavier_seignard">@xavier_seignard</a></footer>
+    <footer align="right">
+    	Eclipse Indigo demo camp Nantes</br>
+    	<a href="http://twitter.com/xavier_seignard">@xavier_seignard</a>
+    </footer>
 </section>
 
 <section>
@@ -25,12 +28,16 @@
 <section>
     <h2>What is <strong>Tycho</strong>?</h2>
     <ul>
-        <li>Maven extension for Eclipse/OSGI
+        <li>Maven extensions for Eclipse/OSGI
         <li>Builds for plugins, features, update sites, ...
         <li>Manifest based approach
-        <li>Tiny conf file : pom.xml
+        <li>Only one tiny conf file needed per project
         <li><strong>The power of Maven!!</strong>
     </ul>
+</section>
+
+<section class="chapter">
+    <h1>What does <strong>Tycho</strong> changes?</h1>
 </section>
 
 <section>
@@ -45,11 +52,37 @@
 
 <section>
     <h2>Classic <strong>maven</strong> project configuration</h2>
-    <p>pom.xml : dependencies, <strong>convention</strong> over configuration
+    <p>pom.xml : dependencies, build process, ...
     <img src="images/pom.png">
     </p>
 </section>
 
+<section>
+	<h2>Artifact packaging</h2> 
+	<p>Specified with <strong>&lt;packaging&gt;</strong> element in pom.xml
+	<ul>
+  		<li>pom
+		<li>jar
+		<li>war
+		<li>ear
+		<li>...
+	</ul>
+</section>
+<section>
+	<h2>Artifact packaging</h2> 
+	<p>
+	Tycho adds <strong>Eclipse specific packaging</strong> types :
+	<ul>
+  		<li>eclipse-plugin
+  		<li>eclipse-feature
+  		<li>eclipse-update-site
+  		<li>...
+  	</ul>
+  	</p>
+</section>
+<section class="chapter">
+    <h1>Start with <strong>Tycho</strong></h1>
+</section>
 <section>
     <h2>Define your target platform</h2>
     <p>The set of features/plugins needed to build your app, 3 ways to define it :
@@ -82,32 +115,29 @@
     <br/><br/>
     <img src="images/target.png"></p>
 </section>
-<section>
-    <h2>Define the packaging</h2>
-    <ul>
-        <li>eclipse-plugin
-        <li>eclipse-test-plugin
-        <li>eclipse-feature
-        <li>eclipse-update-site
-        <li>...
-    </ul>
-</section>
 
 <section>	
     <h2>Define the packaging ...</h2>
     <br/><br/>
    	<div align=center><img src="images/packaging.png"></div>
-	<br/>
-    <h2>... And <strong>that's all!</strong></h2>
+	<ul>
+  		<li>eclipse-plugin
+  		<li>eclipse-feature
+  		<li>eclipse-update-site
+  		<li>...
+  	</ul>
     </p>
+</section>
+<section class="chapter">
+    <h1>And <strong>that's all</strong></h1>
 </section>
 
 <section>
     <h2>Or almost</h2>
-    <p>You also need to define what we call a <strong>parent pom</strong>.
+    <p>You need to define a <strong>parent pom</strong>.
     <ul>
-        <li>Tycho plugins
-        <li>Other Maven plugins
+        <li>Aggregates projects as modules
+        <li>Common build settings
         <li>Repositories
         <li>Target platform
         <li>Target environments
@@ -170,7 +200,7 @@
   }
   ul {
       margin-top: 70px;
-      font-size: 35px;
+      font-size: 28px;
       text-align: right;
       border-right: 4px solid white;
       padding-right: 40px;
@@ -180,7 +210,7 @@
   }
   q, p {
       margin: 50px auto 0 auto;
-      width: 500px;
+      width: 80%;
   }
   q:after {content: ""}
   q:before {content: ""}
