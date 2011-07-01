@@ -47,6 +47,12 @@
 							<includes>**/*</includes>
 							<url>${scp.url}</url>
 							<toDir>${scp.toDir}</toDir>
+							<!-- Points to your settings.xml where the connection settings are stored as shown below -->
+							<!-- <server> -->
+							<!-- 	<id>ec2perso</id> -->
+							<!-- 	<username>ubuntu</username> -->
+							<!-- 	<privateKey>${user.home}/.ec2/persoKeypair.pem</privateKey> -->
+							<!-- </server> -->
 							<serverId>ec2perso</serverId>
 						</configuration>
 					</execution>
