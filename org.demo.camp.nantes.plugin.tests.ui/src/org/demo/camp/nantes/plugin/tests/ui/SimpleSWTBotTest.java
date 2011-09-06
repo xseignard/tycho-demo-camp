@@ -3,6 +3,8 @@ package org.demo.camp.nantes.plugin.tests.ui;
 import static org.junit.Assert.assertEquals;
 
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.junit.AfterClass;
@@ -18,7 +20,11 @@ public class SimpleSWTBotTest {
 	@BeforeClass
 	public static void beforeClass() throws Exception {
 		bot = new SWTWorkbenchBot();
-		bot.viewByTitle("Welcome").close();
+		try {
+			bot.viewByTitle("Welcome").close();
+		} catch (WidgetNotFoundException exception){
+			// Do nothing if the Welcome view is not displayed
+		}
 	}
  
  
@@ -28,11 +34,14 @@ public class SimpleSWTBotTest {
  
 		SWTBotShell shell = bot.shell("Plugin");
 		shell.activate();
+		bot.sleep(1000);
 		
 		String actualText = shell.getText();
-		
-		
-		assertEquals(actualText, "Plugin");
+		for (SWTBotShell shell1 : bot.shells()) {
+			if (shell1.equals(shell)) {
+				assertEquals(actualText, "Plugin");
+			}
+		}
 		
 		bot.button("OK").click();
 	}

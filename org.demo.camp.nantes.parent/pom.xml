@@ -162,5 +162,29 @@
 	        </plugins>
 	      </build>
 	    </profile>
+	    <!-- MacOS specific vm arguments for UI testing -->
+        <profile>
+	      <id>osx</id>
+	      <activation>
+	        <property>
+	          <name>java.vendor.url</name>
+	          <value>http://www.apple.com/</value>
+	        </property>
+	      </activation>
+	      <build>
+	        <pluginManagement>
+	          <plugins>
+	            <plugin>
+	              <groupId>org.eclipse.tycho</groupId>
+	              <artifactId>tycho-surefire-plugin</artifactId>
+	              <version>${tycho-version}</version>
+	              <configuration>
+	                <argLine>-XstartOnFirstThread</argLine>
+	              </configuration>
+	            </plugin>
+	          </plugins>
+	        </pluginManagement>
+	      </build>
+	    </profile>
     </profiles>
 </project>
