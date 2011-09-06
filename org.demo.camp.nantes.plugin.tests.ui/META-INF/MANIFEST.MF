@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Plugin.tests.ui
+Bundle-SymbolicName: org.demo.camp.nantes.plugin.tests.ui
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.swtbot.eclipse.core;bundle-version="2.0.4",
+ org.eclipse.swtbot.eclipse.finder;bundle-version="2.0.4",
+ org.eclipse.swtbot.junit4_x;bundle-version="2.0.4",
+ org.eclipse.ui;bundle-version="3.7.0",
+ org.junit;bundle-version="4.8.2",
+ org.demo.camp.nantes;bundle-version="1.0.0",
+ org.hamcrest;bundle-version="1.1.0"
