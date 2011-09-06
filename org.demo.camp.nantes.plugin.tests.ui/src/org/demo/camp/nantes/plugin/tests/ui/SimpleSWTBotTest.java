@@ -2,8 +2,8 @@ package org.demo.camp.nantes.plugin.tests.ui;
  
 import static org.junit.Assert.assertEquals;
 
+import org.demo.camp.nantes.plugin.actions.SampleAction;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -32,16 +32,12 @@ public class SimpleSWTBotTest {
 	public void popupTest() throws Exception {
 		bot.menu("Sample Menu").menu("Sample Action").click();
  
-		SWTBotShell shell = bot.shell("Plugin");
-		shell.activate();
+		SWTBotShell botShell = bot.shell("Plugin");
+		botShell.activate();
 		bot.sleep(1000);
 		
-		String actualText = shell.getText();
-		for (SWTBotShell shell1 : bot.shells()) {
-			if (shell1.equals(shell)) {
-				assertEquals(actualText, "Plugin");
-			}
-		}
+		String actualTitle = botShell.getText();
+		assertEquals(SampleAction.TITLE, actualTitle);
 		
 		bot.button("OK").click();
 	}

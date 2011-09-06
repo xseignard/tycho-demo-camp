@@ -15,7 +15,11 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * @see IWorkbenchWindowActionDelegate
  */
 public class SampleAction implements IWorkbenchWindowActionDelegate {
+	public static final String TEXT = "Hello, Eclipse Demo Camp";
+	public static final String TITLE = "Plugin";
 	private IWorkbenchWindow window;
+	
+	
 	/**
 	 * The constructor.
 	 */
@@ -31,8 +35,8 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 	public void run(IAction action) {
 		MessageDialog.openInformation(
 			window.getShell(),
-			"Plugin",
-			"Hello, Eclipse Demo Camp");
+			TITLE,
+			TEXT);
 	}
 
 	/**
