@@ -82,6 +82,7 @@
 					  </includes>
 					  <!-- Kill test JVM if tests take more than 10 minutes (600 seconds) to finish -->
 					  <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+					  <argLine>-XstartOnFirstThread</argLine>
 					</configuration>
 				</plugin>
 				<!-- Configuration of target platforms -->
@@ -155,6 +156,7 @@
 	                <configuration>
 	                  <!-- Where to put jacoco coverage report -->
 	                  <destFile>${sonar.jacoco.reportPath}</destFile>
+	                  <propertyName>appArgLine</propertyName>
 	                </configuration>
 	              </execution>
 	            </executions>
@@ -162,32 +164,32 @@
 	        </plugins>
 	      </build>
 	    </profile>
-	    <!-- MacOS specific vm arguments for UI testing -->
-        <profile>
-	      <id>osx</id>
-	      <activation>
-	        <property>
-	          <name>java.vendor.url</name>
-	          <value>http://www.apple.com/</value>
-	        </property>
-	      </activation>
-	      <properties>
-	      	<sonar.jacoco.argLine>-javaagent:/Users/xas/.m2/repository/org/jacoco/org.jacoco.agent/0.5.3.201107060350/org.jacoco.agent-0.5.3.201107060350-runtime.jar=destfile=/Users/xas/Documents/repos/tycho-demo-camp/org.demo.camp.nantes.parent/target/jacoco.exec -XstartOnFirstThread</sonar.jacoco.argLine>
-	      </properties>
-	      <build>
-	        <pluginManagement>
-	          <plugins>
-	            <plugin>
-	              <groupId>org.eclipse.tycho</groupId>
-	              <artifactId>tycho-surefire-plugin</artifactId>
-	              <version>${tycho.version}</version>
-	              <configuration>
-	                <argLine>${sonar.jacoco.argLine}</argLine>
-	              </configuration>
-	            </plugin>
-	          </plugins>
-	        </pluginManagement>
-	      </build>
-	    </profile>
+<!-- 	    MacOS specific vm arguments for UI testing -->
+<!--         <profile> -->
+<!-- 	      <id>osx</id> -->
+<!-- 	      <activation> -->
+<!-- 	        <property> -->
+<!-- 	          <name>java.vendor.url</name> -->
+<!-- 	          <value>http://www.apple.com/</value> -->
+<!-- 	        </property> -->
+<!-- 	      </activation> -->
+<!-- 	      <properties> -->
+<!-- 	      	<sonar.jacoco.argLine>-javaagent:/Users/xas/.m2/repository/org/jacoco/org.jacoco.agent/0.5.3.201107060350/org.jacoco.agent-0.5.3.201107060350-runtime.jar=destfile=/Users/xas/Documents/repos/tycho-demo-camp/org.demo.camp.nantes.parent/target/jacoco.exec -XstartOnFirstThread</sonar.jacoco.argLine> -->
+<!-- 	      </properties> -->
+<!-- 	      <build> -->
+<!-- 	        <pluginManagement> -->
+<!-- 	          <plugins> -->
+<!-- 	            <plugin> -->
+<!-- 	              <groupId>org.eclipse.tycho</groupId> -->
+<!-- 	              <artifactId>tycho-surefire-plugin</artifactId> -->
+<!-- 	              <version>${tycho.version}</version> -->
+<!-- 	              <configuration> -->
+<!-- 	                <argLine>${sonar.jacoco.argLine}</argLine> -->
+<!-- 	              </configuration> -->
+<!-- 	            </plugin> -->
+<!-- 	          </plugins> -->
+<!-- 	        </pluginManagement> -->
+<!-- 	      </build> -->
+<!-- 	    </profile> -->
     </profiles>
 </project>
