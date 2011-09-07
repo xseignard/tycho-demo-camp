@@ -17,6 +17,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<!-- Java version -->
 		<jdk.version>1.6</jdk.version>
+		<!-- Jacoco version -->
+		<jacoco.version>0.5.3.201107060350</jacoco.version>
 	</properties>
 
 	<modules>
@@ -53,36 +55,35 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-		          <groupId>org.eclipse.tycho</groupId>
-		          <artifactId>tycho-packaging-plugin</artifactId>
-		          <version>${tycho.version}</version>
-		          <configuration>
-		            <!-- workaround for TYCHO-349 or TYCHO-313 -->
-		            <strictVersions>false</strictVersions>
-		          </configuration>
-		        </plugin>
-		        <plugin>
-		          <groupId>org.eclipse.tycho</groupId>
-		          <artifactId>tycho-compiler-plugin</artifactId>
-		          <version>${tycho.version}</version>
-		          <configuration>
-		            <source>${jdk.version}</source>
-		            <target>${jdk.version}</target>
-		          </configuration>
-		        </plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<!-- workaround for TYCHO-349 or TYCHO-313 -->
+						<strictVersions>false</strictVersions>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
+				</plugin>
 				<!-- Testing -->
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-surefire-plugin</artifactId>
 					<version>${tycho.version}</version>
 					<configuration>
-					  <useUIHarness>false</useUIHarness>
-					  <includes>
-					    <include>**/*Test.java</include>
-					  </includes>
-					  <!-- Kill test JVM if tests take more than 10 minutes (600 seconds) to finish -->
-					  <forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
-					  <argLine>-XstartOnFirstThread</argLine>
+						<useUIHarness>false</useUIHarness>
+						<includes>
+							<include>**/*Test.java</include>
+						</includes>
+						<!-- Kill test JVM if tests take more than 10 minutes (600 seconds) to finish -->
+						<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
 					</configuration>
 				</plugin>
 				<!-- Configuration of target platforms -->
@@ -126,70 +127,69 @@
 	</build>
 	<profiles>
 		<!-- This profile is used to gather code coverage for Sonar -->
-	    <profile>
-	      <id>codeCoverage</id>
-	      <properties>
-	        <!-- Properties to enable jacoco code coverage analysis -->
-	        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-	        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-	        <sonar.jacoco.reportPath>../org.demo.camp.nantes.parent/target/jacoco.exec</sonar.jacoco.reportPath>
-	        <!-- For portability purpose, the server conf was put there -->
-	        <sonar.jdbc.url>jdbc:mysql://79.125.43.108:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
-            <sonar.jdbc.driverClassName>com.mysql.jdbc.Driver</sonar.jdbc.driverClassName>
-            <sonar.jdbc.username>sonar</sonar.jdbc.username>
-            <sonar.jdbc.password>sonar</sonar.jdbc.password>
-           	<sonar.host.url>http://ec2-79-125-43-108.eu-west-1.compute.amazonaws.com:8080/sonar</sonar.host.url>
-          </properties>
-          
-	      <build>
-	        <plugins>
-	          <!-- Enabling use of jacoco -->
-	          <plugin>
-	            <groupId>org.jacoco</groupId>
-	            <artifactId>jacoco-maven-plugin</artifactId>
-	            <version>0.5.3.201107060350</version>
-	            <executions>
-	              <execution>
-	                <goals>
-	                  <goal>prepare-agent</goal>
-	                </goals>
-	                <configuration>
-	                  <!-- Where to put jacoco coverage report -->
-	                  <destFile>${sonar.jacoco.reportPath}</destFile>
-	                  <propertyName>appArgLine</propertyName>
-	                </configuration>
-	              </execution>
-	            </executions>
-	          </plugin>
-	        </plugins>
-	      </build>
-	    </profile>
-<!-- 	    MacOS specific vm arguments for UI testing -->
-<!--         <profile> -->
-<!-- 	      <id>osx</id> -->
-<!-- 	      <activation> -->
-<!-- 	        <property> -->
-<!-- 	          <name>java.vendor.url</name> -->
-<!-- 	          <value>http://www.apple.com/</value> -->
-<!-- 	        </property> -->
-<!-- 	      </activation> -->
-<!-- 	      <properties> -->
-<!-- 	      	<sonar.jacoco.argLine>-javaagent:/Users/xas/.m2/repository/org/jacoco/org.jacoco.agent/0.5.3.201107060350/org.jacoco.agent-0.5.3.201107060350-runtime.jar=destfile=/Users/xas/Documents/repos/tycho-demo-camp/org.demo.camp.nantes.parent/target/jacoco.exec -XstartOnFirstThread</sonar.jacoco.argLine> -->
-<!-- 	      </properties> -->
-<!-- 	      <build> -->
-<!-- 	        <pluginManagement> -->
-<!-- 	          <plugins> -->
-<!-- 	            <plugin> -->
-<!-- 	              <groupId>org.eclipse.tycho</groupId> -->
-<!-- 	              <artifactId>tycho-surefire-plugin</artifactId> -->
-<!-- 	              <version>${tycho.version}</version> -->
-<!-- 	              <configuration> -->
-<!-- 	                <argLine>${sonar.jacoco.argLine}</argLine> -->
-<!-- 	              </configuration> -->
-<!-- 	            </plugin> -->
-<!-- 	          </plugins> -->
-<!-- 	        </pluginManagement> -->
-<!-- 	      </build> -->
-<!-- 	    </profile> -->
-    </profiles>
+		<profile>
+			<id>codeCoverage</id>
+			<properties>
+				<!-- Properties to enable jacoco code coverage analysis -->
+				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+				<sonar.jacoco.reportPath>../org.demo.camp.nantes.parent/target/jacoco.exec</sonar.jacoco.reportPath>
+				<!-- For portability purpose, the server conf was put there -->
+				<sonar.jdbc.url>jdbc:mysql://79.125.43.108:3306/sonar?useUnicode=true&amp;characterEncoding=utf8</sonar.jdbc.url>
+				<sonar.jdbc.driverClassName>com.mysql.jdbc.Driver</sonar.jdbc.driverClassName>
+				<sonar.jdbc.username>sonar</sonar.jdbc.username>
+				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+				<sonar.host.url>http://ec2-79-125-43-108.eu-west-1.compute.amazonaws.com:8080/sonar</sonar.host.url>
+			</properties>
+
+			<build>
+				<plugins>
+					<!-- Enabling use of jacoco -->
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+						<version>${jacoco.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<!-- Where to put jacoco coverage report -->
+									<destFile>${sonar.jacoco.reportPath}</destFile>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- MacOS specific vm arguments for UI testing -->
+		<profile>
+			<id>osx</id>
+			<activation>
+				<property>
+					<name>java.vendor.url</name>
+					<value>http://www.apple.com/</value>
+				</property>
+			</activation>
+			<properties>
+				<sonar.jacoco.argLine>-javaagent:${user.home}/.m2/repository/org/jacoco/org.jacoco.agent/${jacoco.version}/org.jacoco.agent-${jacoco.version}-runtime.jar=destfile=../org.demo.camp.nantes.parent/target/jacoco.exec -XstartOnFirstThread</sonar.jacoco.argLine>
+			</properties>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.tycho</groupId>
+							<artifactId>tycho-surefire-plugin</artifactId>
+							<version>${tycho.version}</version>
+							<configuration>
+								<argLine>${sonar.jacoco.argLine}</argLine>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 </project>
