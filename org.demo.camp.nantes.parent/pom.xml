@@ -173,9 +173,6 @@
 					<value>http://www.apple.com/</value>
 				</property>
 			</activation>
-			<properties>
-				<sonar.jacoco.argLine>-javaagent:${user.home}/.m2/repository/org/jacoco/org.jacoco.agent/${jacoco.version}/org.jacoco.agent-${jacoco.version}-runtime.jar=destfile=../org.demo.camp.nantes.parent/target/jacoco.exec -XstartOnFirstThread</sonar.jacoco.argLine>
-			</properties>
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -184,7 +181,7 @@
 							<artifactId>tycho-surefire-plugin</artifactId>
 							<version>${tycho.version}</version>
 							<configuration>
-								<argLine>${sonar.jacoco.argLine}</argLine>
+								<argLine combine.children="append">-XstartOnFirstThread</argLine>
 							</configuration>
 						</plugin>
 					</plugins>
