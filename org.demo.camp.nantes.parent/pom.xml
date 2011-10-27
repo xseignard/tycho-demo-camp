@@ -181,7 +181,7 @@
 							<artifactId>tycho-surefire-plugin</artifactId>
 							<version>${tycho.version}</version>
 							<configuration>
-								<argLine combine.children="append">-XstartOnFirstThread</argLine>
+								<appArgLine>-XstartOnFirstThread</appArgLine>
 							</configuration>
 						</plugin>
 					</plugins>
