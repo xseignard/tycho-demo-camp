@@ -6,7 +6,6 @@
 		<groupId>org.demo.camp.nantes</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../org.demo.camp.nantes.parent</relativePath>
 	</parent>
 
 	<artifactId>Update</artifactId>
