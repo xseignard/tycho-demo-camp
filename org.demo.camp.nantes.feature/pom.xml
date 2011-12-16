@@ -8,7 +8,7 @@
   	<relativePath>../org.demo.camp.nantes.parent</relativePath>
   </parent>
   
-  <artifactId>Feature</artifactId>
+  <artifactId>org.demo.camp.nantes.feature</artifactId>
   <packaging>eclipse-feature</packaging>
   <name>Feature</name>
 </project>

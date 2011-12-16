@@ -9,7 +9,7 @@
 		<relativePath>../org.demo.camp.nantes.parent</relativePath>		
 	</parent>
 
-	<artifactId>Plugin.test.ui</artifactId>
+	<artifactId>org.demo.camp.nantes.plugin.tests.ui</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 	<name>Plugin.test.ui</name>
 	
