@@ -83,9 +83,9 @@
 					<version>${tycho.version}</version>
 					<configuration>
 						<useUIHarness>false</useUIHarness>
-						<!-- Kill test JVM if tests take more than 10 minutes (600 seconds) 
+						<!-- Kill test JVM if tests take more than 1 minute 
 							to finish -->
-						<forkedProcessTimeoutInSeconds>600</forkedProcessTimeoutInSeconds>
+						<forkedProcessTimeoutInSeconds>60</forkedProcessTimeoutInSeconds>
 					</configuration>
 				</plugin>
 				<!-- Configuration of target platforms -->
