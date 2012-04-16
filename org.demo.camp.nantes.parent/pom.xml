@@ -10,7 +10,7 @@
 	<name>Parent</name>
 
 	<properties>
-		<!-- Tycho version to use, under groupId "org.eclipse.tycho" since 0.12.0 -->
+		<!-- Tycho version to use -->
 		<tycho.version>0.14.1</tycho.version>
 		<!-- Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

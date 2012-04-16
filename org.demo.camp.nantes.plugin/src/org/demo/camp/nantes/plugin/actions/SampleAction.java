@@ -15,7 +15,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * @see IWorkbenchWindowActionDelegate
  */
 public class SampleAction implements IWorkbenchWindowActionDelegate {
-	public static final String TEXT = "Hello, Eclipse Demo Camp";
+	public static final String TEXT = "Hello world!";
 	public static final String TITLE = "Plugin";
 	private IWorkbenchWindow window;
 	
