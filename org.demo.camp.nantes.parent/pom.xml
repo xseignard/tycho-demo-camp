@@ -131,7 +131,7 @@
 	<profiles>
 		<!-- This profile is used to generate  jacoco xml report -->
 		<profile>
-			<id>report</id>
+			<id>reporting</id>
 			<build>
 				<plugins>
 					<!-- Enabling use of jacoco -->
@@ -141,6 +141,7 @@
 						<version>${jacoco.version}</version>
 						<executions>
 							<execution>
+								<id>prepare-agent</id>
 								<goals>
 									<goal>prepare-agent</goal>
 								</goals>
@@ -150,6 +151,7 @@
 								</configuration>
 							</execution>
 							<execution>
+								<id>report</id>
 								<goals>
 									<goal>report</goal>
 								</goals>
