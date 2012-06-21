@@ -20,7 +20,7 @@
 		<!-- Jacoco version -->
 		<jacoco.version>0.5.6.201201232323</jacoco.version>
 		<!-- Properties to enable jacoco code coverage analysis -->
-		<jacoco.reportPath>../org.demo.camp.nantes.parent/target/jacoco.xml</jacoco.reportPath>
+		<jacoco.reportDir>../org.demo.camp.nantes.parent/target/jacoco/</jacoco.reportDir>
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>../org.demo.camp.nantes.parent/target/jacoco.exec</sonar.jacoco.reportPath>
@@ -142,11 +142,21 @@
 						<executions>
 							<execution>
 								<goals>
+									<goal>prepare-agent</goal>
+								</goals>
+								<configuration>
+									<!-- Where to put jacoco coverage report -->
+									<destFile>${sonar.jacoco.reportPath}</destFile>
+								</configuration>
+							</execution>
+							<execution>
+								<goals>
 									<goal>report</goal>
 								</goals>
 								<configuration>
-									<!-- Where to put jacoco coverage xml report -->
-									<destFile>${jacoco.reportPath}</destFile>
+									<!-- Where to put jacoco coverage report -->
+									<dataFile>${sonar.jacoco.reportPath}</dataFile>
+									<outputDirectory>${jacoco.reportDir}</outputDirectory>
 								</configuration>
 							</execution>
 						</executions>
